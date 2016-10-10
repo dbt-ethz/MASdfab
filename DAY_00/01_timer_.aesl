@@ -1,0 +1,41 @@
+<!DOCTYPE aesl-source>
+<network>
+
+
+<!--list of global events-->
+
+
+<!--list of constants-->
+
+
+<!--show keywords state-->
+<keywords flag="true"/>
+
+
+<!--node thymio-II-->
+<node nodeId="43054" name="thymio-II">var state
+var numberOfevents
+
+state = 0
+numberOfevents = 0
+timer.period[0] = 1000
+
+onevent timer0
+	numberOfevents=numberOfevents+1
+	if state==1 then
+		state = 0
+		motor.left.target = 200
+		motor.right.target = 100
+	elseif state==0 then
+		state = 1
+		motor.left.target = 100
+		motor.right.target = 200
+	end
+	if  numberOfevents>=5 then
+		timer.period[0] = 0
+		motor.left.target = 0
+		motor.right.target = 0		
+	end</node>
+
+
+</network>

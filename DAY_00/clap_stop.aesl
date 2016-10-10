@@ -1,0 +1,32 @@
+<!DOCTYPE aesl-source>
+<network>
+
+
+<!--list of global events-->
+<event size="1" name="pair_run"/>
+
+
+<!--list of constants-->
+
+
+<!--show keywords state-->
+<keywords flag="true"/>
+
+
+<!--node thymio-II-->
+<node nodeId="43054" name="thymio-II"># setup threshold for detecting claps
+mic.threshold = 200
+
+onevent buttons
+	when button.forward == 1 do
+		motor.left.target = 500
+		motor.right.target = 500
+	end
+
+onevent mic
+	motor.left.target = 0
+	motor.right.target = 0
+</node>
+
+
+</network>
