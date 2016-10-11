@@ -29,17 +29,7 @@ def draw():
     global voxelShape
     voxelShape = voxelSpace.getPShape(this,isoslider.getValue())
     shape(voxelShape)
-    '''
-    for i in range(nx*ny*nz):
-        x = voxelSpace.getX(i)
-        y = voxelSpace.getY(i)
-        z = voxelSpace.getZ(i)
-        v = voxelSpace.get(i)
-        v = (v+3)/6
-        stroke(v*255)
-        point(x,y,z)
-    '''
-    
+
     cam.beginHUD()
     noLights()
     cp5.draw()
@@ -60,7 +50,9 @@ def construct():
         fy = float(y)/ny
         fz = float(z)/nz
         v = cos(fx*TWO_PI)+cos(fy*TWO_PI)+cos(fz*TWO_PI)
-        voxelSpace.set(i, v)
+        v = v+sin(fx*TWO_PI*8)/3 + sin(fy*TWO_PI*9)/3 + sin(fz*TWO_PI*10)/3
+        voxelSpace.set(i, abs(v))
+    voxelSpace.setValueToBorders(4)
         
     print voxelSpace.getMin(),voxelSpace.getMax()
     voxelShape = voxelSpace.getPShape(this,0)
