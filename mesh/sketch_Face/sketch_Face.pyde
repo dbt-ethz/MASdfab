@@ -1,5 +1,5 @@
 add_library('peasycam') #import library
-from Face import Face
+from face import Face
 
 def setup():
     size(800,450,P3D)
