@@ -14,10 +14,10 @@ def setup():
     myFace.color=color(0,255,0)# set the color of the face
     
 def draw():
-    background(0)
-    fill(myFace.color)
+    background(0) # draw a black background
+    fill(myFace.color) 
     beginShape()
-    for p in myFace.nodes:
-        vertex(p.x,p.y,p.z)
+    for myNode in myFace.nodes:
+        vertex(myNode.x,myNode.y,myNode.z)
     endShape(CLOSE)
   
