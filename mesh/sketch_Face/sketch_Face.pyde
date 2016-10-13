@@ -1,4 +1,4 @@
-add_library('peasycam')
+add_library('peasycam') #import library
 from Face import Face
 
 def setup():
