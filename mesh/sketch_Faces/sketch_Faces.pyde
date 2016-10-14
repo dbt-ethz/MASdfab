@@ -25,8 +25,4 @@ def setup():
 def draw():
     background(0) # draw a black background
     for face in faces:
-        fill(face.color)
-        beginShape()
-        for node in face.nodes:
-            vertex(node.x,node.y,node.z)
-        endShape()
+        face.display()
