@@ -17,5 +17,8 @@ def draw():
                 green=0
             if j%5==0:
                 blue=0
-            fill(red,green,0)
+            if (i+j)%3==0:
+                green=0
+                blue=0
+            fill(red,green,blue)
             rect(i*rectWidth,j*rectHeight,rectWidth,rectHeight)
