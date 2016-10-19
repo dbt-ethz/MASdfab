@@ -35,7 +35,7 @@ def subdivide(faces):
     for face in faces:
         newFaces.extend(subdivideFace(face,sliderExtrude.getValue()))
     return newFaces
-    
+
 def subdivideFace(face,extrude):
     newFaces=[]
     center=face.getCenter()
