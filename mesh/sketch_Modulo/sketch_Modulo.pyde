@@ -2,8 +2,8 @@ def setup():
     size(800,450)
     
 def draw():
-    nColumns=20
-    nRows=10
+    nColumns=100
+    nRows=30
     rectWidth=width/nColumns
     rectHeight=height/nRows
     for i in xrange(nColumns):
