@@ -12,14 +12,17 @@ def setup():
     sliderExtrude = cp5.addSlider("extrude").setPosition(10,10).setRange(0,200)
 
 def draw():
+    # initialise the geometry
+    faces=[Face([PVector(-100,-100),PVector(+100,-100),PVector(+100,+100),PVector(-100,+100)])]
+    # subdivide all faces 5 times
+    for i in xrange(5):
+        faces=subdivide(faces)
+
+    # drawing
     if mouseX<150:
         cam.setActive(False)
     else:
         cam.setActive(True)
-
-    faces=[Face([PVector(-100,-100),PVector(+100,-100),PVector(+100,+100),PVector(-100,+100)])]
-    for i in xrange(5):
-        faces=subdivide(faces)
     background(0) # draw a black background
     lights()
     for face in faces:
