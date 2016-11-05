@@ -5,17 +5,17 @@ from face import Face
 
 def setup():
     size(800,450,P3D)
-    global cp5, cam, sliderExtrude
+    global cp5, cam, sliderExtrude, sliderIterate
     cam=PeasyCam(this,1000)
     cp5 = ControlP5(this)
     cp5.setAutoDraw(False)
     sliderExtrude = cp5.addSlider("extrude").setPosition(10,10).setRange(0,200)
-
+    sliderIterate=cp5.addSlider("iterations").setPosition(10,30).setRange(1,6).setNumberOfTickMarks(6)
 def draw():
     # initialise the geometry
     faces=[Face([PVector(-100,-100),PVector(+100,-100),PVector(+100,+100),PVector(-100,+100)])]
     # subdivide all faces 5 times
-    for i in xrange(5):
+    for i in xrange(sliderIterate.getValue()):
         faces=subdivide(faces)
 
     # drawing
@@ -48,5 +48,10 @@ def subdivideFace(face,extrude):
     for i in xrange(len(face.nodes)):
         n1=face.nodes[i]
         n2=face.nodes[(i+1)%len(face.nodes)]
-        newFaces.append(Face([n1,n2,center]))
+        lastFace=Face([n1,n2,center])
+        if i%3==0:
+            lastFace.color=color(255,0,0)
+        if i%3==1:
+            lastFace.color=color(0,255,255)
+        newFaces.append(lastFace)
     return newFaces
