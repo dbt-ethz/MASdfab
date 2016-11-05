@@ -50,7 +50,6 @@ def createCube(s):
     cube.addFace([2,3,7,6])
     cube.addFace([0,3,2,1])
     cube.addFace([7,4,5,6])
-
     return cube
 
 def keyPressed():

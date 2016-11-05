@@ -11,17 +11,18 @@ def setup():
     cp5.setAutoDraw(False)
     sliderExtrude = cp5.addSlider("extrude").setPosition(10,10).setRange(0,200)
     sliderIterate=cp5.addSlider("iterate").setPosition(10,30).setRange(1,6).setNumberOfTickMarks(6)
-    
+
     sliderDimX = cp5.addSlider("dim x").setPosition(10,60).setRange(100,500)
     sliderDimY = cp5.addSlider("dim y").setPosition(10,80).setRange(100,500)
     sliderDimZ = cp5.addSlider("dim z").setPosition(10,100).setRange(100,500)
+    
 def draw():
     if mouseX<150:
         cam.setActive(False)
     else:
         cam.setActive(True)
 
-    faces= createCube(sliderDimX.getValue(),sliderDimY.getValue(),sliderDimZ.getValue())                        
+    faces= createCube(sliderDimX.getValue(),sliderDimY.getValue(),sliderDimZ.getValue())
     for i in xrange(sliderIterate.getValue()):
         faces=subdivide(faces)
     background(0) # draw a black background
@@ -33,7 +34,7 @@ def draw():
     noLights()
     cp5.draw()
     cam.endHUD()
-    
+
 
 def subdivide(faces):
     newFaces=[]
